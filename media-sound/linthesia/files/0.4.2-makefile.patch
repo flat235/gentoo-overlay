@@ -1,0 +1,13 @@
+--- src/Makefile	2009-12-26 12:49:41.000000000 +0100
++++ src/Makefile.new	2014-10-18 01:04:56.046130170 +0200
+@@ -22,8 +22,8 @@
+ 	$(MAKE) -C libmidi
+ 
+ install: all
+-	-mkdir -p $(DESTDIR)/usr/games
+-	install -m 755 $(TARGET) -g root -o root $(DESTDIR)/usr/games/
++	-mkdir -p $(DESTDIR)/usr/games/bin
++	install -m 755 $(TARGET) -g games -o root $(DESTDIR)/usr/games/bin/
+ 
+ .PHONY:clean
+ clean:

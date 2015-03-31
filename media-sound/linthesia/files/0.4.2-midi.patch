@@ -1,0 +1,41 @@
+Index: src/libmidi/Midi.cpp
+===================================================================
+--- src/libmidi/Midi.cpp	(revision 84)
++++ src/libmidi/Midi.cpp	(working copy)
+@@ -74,10 +74,10 @@
+     }
+   }
+ 
+-  stream.read(reinterpret_cast<char*>(&header_length), sizeof(unsigned long));
+-  stream.read(reinterpret_cast<char*>(&format),        sizeof(unsigned short));
+-  stream.read(reinterpret_cast<char*>(&track_count),   sizeof(unsigned short));
+-  stream.read(reinterpret_cast<char*>(&time_division), sizeof(unsigned short));
++  stream.read(reinterpret_cast<char*>(&header_length), 4);
++  stream.read(reinterpret_cast<char*>(&format),        2);
++  stream.read(reinterpret_cast<char*>(&track_count),   2);
++  stream.read(reinterpret_cast<char*>(&time_division), 2);
+ 
+   if (stream.fail())
+     throw MidiError(MidiError_NoHeader);
+@@ -224,7 +224,7 @@
+ 
+   // Copy over all our tempo events
+   unsigned long previous_absolute_pulses = 0;
+-  for (map<unsigned long, MidiEvent>::const_iterator i = tempo_events.begin(); 
++  for (map<unsigned long, MidiEvent>::const_iterator i = tempo_events.begin();
+        i != tempo_events.end(); ++i) {
+ 
+     unsigned long absolute_pulses = i->first;
+Index: src/libmidi/MidiTrack.cpp
+===================================================================
+--- src/libmidi/MidiTrack.cpp	(revision 84)
++++ src/libmidi/MidiTrack.cpp	(working copy)
+@@ -29,7 +29,7 @@
+   unsigned long track_length;
+ 
+   stream.read(header_id, static_cast<streamsize>(MidiTrackHeader.length()));
+-  stream.read(reinterpret_cast<char*>(&track_length), sizeof(unsigned long));
++  stream.read(reinterpret_cast<char*>(&track_length), 4);
+ 
+   if (stream.fail())
+     throw MidiError(MidiError_TrackHeaderTooShort);
