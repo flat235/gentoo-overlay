@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "http://www.gentoo.org/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name><![CDATA[flat235]]></name>
+    <description lang="en"><![CDATA[flatline's gentoo overlay]]></description>
+    <homepage>https://github.com/flat235/gentoo-overlay</homepage>
+    <owner type="person">
+      <email>github@moritzbellach.de</email>
+      <name>Moritz Bellach</name>
+    </owner>
+    <source type="git">git://github.com/flat235/gentoo-overlay.git</source>
+  </repo>
+</repositories>
