@@ -1,0 +1,10 @@
+--- CMakeLists.txt	2015-05-24 19:42:32.769076784 +0200
++++ CMakeLists.txt.new	2015-05-24 19:43:08.891273652 +0200
+@@ -59,7 +59,6 @@
+ endif()
+ 
+ #setup boost
+-set(Boost_USE_STATIC_LIBS on)
+ find_package(Boost COMPONENTS system program_options filesystem regex thread REQUIRED)
+ link_directories(${Boost_LIBRARY_DIRS})
+ include_directories(${Boost_INCLUDE_DIRS})
